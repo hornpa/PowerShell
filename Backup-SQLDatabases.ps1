@@ -1,4 +1,4 @@
-<#
+﻿<#
     .SYNOPSIS
      Backup-SQLDatabases
     .DESCRIPTION
@@ -15,16 +15,12 @@
 [cmdletbinding()]
 
 Param(
-
     [parameter(Mandatory=$false)]
     [String]$Server = $env:COMPUTERNAME,
-	
     [parameter(Mandatory=$false)]
     [String]$DBInstance = "Default",
-	
     [parameter(Mandatory=$true)]
     [String]$BackupPath = (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
-	
 
 )
 
@@ -37,14 +33,12 @@ $Date = Get-Date -Format yyyyMMdd_HHmm
 Write-Verbose "Get Location"
 $PS_Location = Get-Location
 
-Try 
-{
+Try {
+
 	Import-Module "sqlps" -DisableNameChecking
 	Write-Verbose "Module succesfully loaded."
 	
-}
-Catch
-{
+	}Catch{
 	
 	Write-Host "Module could not loaded." -ForegroundColor Red
     Write-Host "Error Message: " -ForegroundColor Red
@@ -56,32 +50,32 @@ Catch
 Write-Verbose "Set Location"
 Set-Location -Path $PS_Location
 
-Try
-{
+Try{
+
     $DBs = Get-ChildItem "SQLSERVER:\SQL\$Server\$DBInstance\Databases"
 	Write-Verbose "DB succesfully connected."
-}
-catch
-{
+
+    }catch{
+
 	Write-Host "DB could not connected." -ForegroundColor Red
     Write-Host "Error Message: " -ForegroundColor Red
     Write-Host $Error[0].Exception.Message -ForegroundColor Red
     Exit
 }
 
-IF ($DBInstance -like "Default")
-{
+IF ($DBInstance -like "Default"){
+
     Write-Verbose "MS SQL Default Instance"
     $DBConnection = $Server
-}
-Else
-{
+
+    }Else{
+
     Write-Verbose "MS SQL Costum Instance"
     $DBConnection = $Server+"\"+$DBInstance
+
 }
 
-Foreach ($DB in $DBs)
-{
+Foreach ($DB in $DBs){
 
 	Write-Verbose "Create Backup..."
 

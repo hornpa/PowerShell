@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type='text/xsl' href='style.xsl'?>
+<ODBC>
+
+	<Connecntion>
+		<Platform>32</Platform>
+		<DsnType>System</DsnType>
+		<Driver>SQL Server Native Client 11.0</Driver>
+		<Name>WIS32SpkHNdb</Name>
+		<Server>g026spwmk1sql02</Server>
+		<Database>WIS32SpkHNdb</Database>
+		<Description>wr Informationssysteme AG</Description>
+		<LastUser>wundr2</LastUser>
+		<AnsiNPW>No</AnsiNPW>
+		<Trusted_Connection>NO</Trusted_Connection>
+	</Connecntion>
+	
+	<Connecntion>
+		<Platform>32</Platform>
+		<DsnType>System</DsnType>
+		<Driver>SQL Server Native Client 11.0</Driver>
+		<Name>WIS32SpkHNsys</Name>
+		<Server>g026spwmk1sql02</Server>
+		<Database>WIS32SpkHNsys</Database>
+		<Description>wr Informationssysteme AG</Description>
+		<LastUser>wundr2</LastUser>
+		<AnsiNPW>No</AnsiNPW>
+		<Trusted_Connection>NO</Trusted_Connection>
+	</Connecntion>
+	
+</ODBC>
