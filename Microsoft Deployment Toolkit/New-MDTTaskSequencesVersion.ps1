@@ -1,23 +1,23 @@
 <#
-    .SYNOPSIS
-     Erstellt eine neue Version einer Task Sequence auf Basis der alten.
-    .DESCRIPTION
-     Die Funktion 'New-MDTTaskSequencesVersion_hp' Erstellt eine neue Version einer Task Sequence auf Basis der alten.
-     Es ist wichtig das sowohl der Name als auch ID bereits eine v1.0 (_v1.0) besitzen da ansonsten es zu fehler kommt.
-    .PARAMETER MDTFolder
-     Gibt den Pfad zum MDT Deployment Share an
-    .EXAMPLE
-     New-MDTTaskSequencesVersion_hp 
-    .EXAMPLE
-     New-MDTTaskSequencesVersion_hp -MDTFolder D:\TestDeploymentShare
-    .NOTES
-     AUTHOR: 
-      Patrik Horn (PHo)
-	 HISTORY:
-	  2016-12-08 - v1.01 - Change from Function to Script, complety redesign code, added gui  (PHo)
-      2015-12-28 - v1.00 - Script created as Function (PHo)    
-    .LINK
-      http://www.hornpa.de
+.SYNOPSIS
+    Erstellt eine neue Version einer Task Sequence auf Basis der alten.
+.DESCRIPTION
+    Die Funktion 'New-MDTTaskSequencesVersion_hp' Erstellt eine neue Version einer Task Sequence auf Basis der alten.
+    Es ist wichtig das sowohl der Name als auch ID bereits eine v1.0 (_v1.0) besitzen da ansonsten es zu fehler kommt.
+.PARAMETER MDTFolder
+    Gibt den Pfad zum MDT Deployment Share an
+.EXAMPLE
+    New-MDTTaskSequencesVersion_hp 
+.EXAMPLE
+    New-MDTTaskSequencesVersion_hp -MDTFolder D:\TestDeploymentShare
+.NOTES
+    AUTHOR: 
+    Patrik Horn (PHo)
+    HISTORY:
+    2016-12-08 - v1.01 - Change from Function to Script, complety redesign code, added gui  (PHo)
+    2015-12-28 - v1.00 - Script created as Function (PHo)    
+.LINK
+    http://www.hornpa.de
 #>
 
 [CmdletBinding(SupportsShouldProcess=$True)]
