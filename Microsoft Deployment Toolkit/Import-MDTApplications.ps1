@@ -31,10 +31,10 @@
 param(
 
     [Parameter(Mandatory=$False,Position=1)]
-    [string]$MDT_Path = "D:\DeploymentShare2",
+    [string]$MDT_Path = "D:\DeploymentShare",
 
     [Parameter(Mandatory=$False,Position=2)]
-    [string]$Import_Path = "D:\Temp\Import",
+    [string]$Import_Path = "S:\_IT\Pakete\_InArbeit",
 
     [Parameter(Mandatory=$False)]
     [switch]$Delete = $False,

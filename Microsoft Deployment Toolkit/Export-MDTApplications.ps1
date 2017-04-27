@@ -24,10 +24,10 @@
 param(
 
     [Parameter(Mandatory=$false)]
-    [string]$MDT_Path = "D:\DeploymentShare2",
+    [string]$MDT_Path = "D:\DeploymentShare",
 
     [Parameter(Mandatory=$false)]
-    [string]$Destination = "D:\Temp\Export",
+    [string]$Destination = "S:\__Online\Pakete",
 
     [Parameter(Mandatory=$False)]
     [switch]$All,
