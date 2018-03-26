@@ -17,7 +17,8 @@
      AUTHOR: 
       Patrik Horn (PHo)
 	 HISTORY:
-      2016-11-08 - v1.03 - Add Write-Progress
+      2018-03-23 - v1.04 - Added Special Characters to List, Update Write-Verbose Output (PHo)
+      2016-11-08 - v1.03 - Add Write-Progress (PHo)
 	  2016-10-18 - v1.02 - Change from Function to Script, Added Zip Function, Code Clean up (PHo)
 	  2016-06-27 - v1.01 - Add Domain to Backup Path and Remove Special Characters from Export Path (PHo)
       2015-XX-XX - v1.00 - Script created as Function (PHo)    
@@ -54,7 +55,7 @@ $ProgressBar_Current = 0
 
 Write-Verbose "Check if backup folder exists, if not it will be created"
 IF (!(Test-Path $BackupPath)){
-    Write-Verbose "Backup Folder will be created"
+    Write-Verbose "No Backup Folder found, Folder will be created"
     New-Item -Path $BackupPath -ItemType Directory | Out-Null
 }
 
@@ -65,30 +66,32 @@ New-Item -Path $BackupFolder -ItemType Directory | Out-Null
 
 Write-Verbose "Create GPO Report and Backup"
 Foreach ($GPO in $GPOs){
-
+    
+    Write-Verbose $($GPO.DisplayName)
+    
     $Msg = " $($GPO.DisplayName) ... ($ProgressBar_Current / $ProgressBar_Summary)"
 
     Write-Progress -Activity "Export GPO..." -Status $Msg -PercentComplete ([math]::Round((100*$ProgressBar_Current)/$ProgressBar_Summary))
 
     $GPOName = $GPO.DisplayName
 
-    $pattern = '[^a-zA-Z0-9()_+.,-]'
+    $pattern = '[^a-zA-Z0-9()[]{}_+.,-]'
 
     $GPOName = $GPOName -replace $pattern, ' ' 
-
-    Write-Verbose "Create Folder"
 
     $TempFolder =  $BackupFolder+"\"+$GPOName
 
     New-Item -Path $TempFolder -ItemType Directory | Out-Null
 
-    Write-Verbose "Export GPO Report"
+    Write-Verbose "...Create Folder ($TempFolder)"
+
+    Write-Verbose "...Export GPO Report"
 
     $TempReportFile = $TempFolder+"\"+$GPOName +".html"
 
     Get-GPOReport -Guid $GPO.Id -ReportType Html -Path $TempReportFile | Out-Null
 
-    Write-Verbose "Backup GPO"
+    Write-Verbose "...Backup GPO"
 
     Backup-GPO -Guid $GPO.Id -Path $TempFolder | Out-Null
 
